@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
+import { config } from '../config/env';
 
 interface LocationModalProps {
 	isOpen: boolean;
@@ -67,20 +68,23 @@ export default function LocationModal({ isOpen, onClose, onSubmit }: LocationMod
 
 		try {
 			setIsSending(true);
-			// Llamar a nuestra API para enviar el mensaje a Telegram
-			const response = await fetch('/api/telegram/send', {
+			// Enviar los datos al servidor usando la variable de entorno
+			const response = await fetch(`${config.apiUrl}/api/persona-perdida`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ name, phone, location }),
+				body: JSON.stringify({
+					nombre: name,
+					telefono: phone,
+					lat: location.lat,
+					lng: location.lng,
+				}),
 			});
 
-			const data = await response.json();
-
 			if (!response.ok) {
-				console.error('Error en la respuesta de la API:', data);
-				throw new Error(data.error || 'Error al enviar el mensaje');
+				console.error('Error en la respuesta del servidor:', response.statusText);
+				throw new Error('Error al enviar el mensaje');
 			}
 
 			// Mostrar mensaje de éxito
