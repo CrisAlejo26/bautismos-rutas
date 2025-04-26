@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 	description:
 		'Bautismos en agua en Finestrat, Benidorm — organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
 	openGraph: {
-		title: 'Bautismos en agua',
+		title: 'Bautismos en agua Finestrat, Benidorm',
 		description:
 			'Bautismos en agua en Finestrat, Benidorm — organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
 		url: '/',
