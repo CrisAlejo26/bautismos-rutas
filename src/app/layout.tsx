@@ -10,7 +10,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bautismos.cristian
 
 export const metadata: Metadata = {
 	metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? BASE_URL),
-	title: 'Bautismos en agua',
+	title: 'Bautismos en agua Finestrat, Benidorm',
 	description:
 		'Bautismos en agua en Finestrat, Benidorm — organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
 	openGraph: {
