@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 		siteName: 'Iglesia de Dios Ministerial de Jesucristo Internacional',
 		images: [
 			{
-				url: `${BASE_URL}/logo.webp`,
+				url: '/logo.webp',
 				width: 800,
 				height: 600,
 				alt: 'Logo Iglesia de Dios Ministerial de Jesucristo Internacional',
