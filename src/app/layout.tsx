@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Bautismos en agua',
+		title: 'Bautismos en agua Finestrat, Benidorm',
 		description:
 			'Bautismos en agua en Finestrat, Benidorm — organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
 		images: ['/logo.webp'],
