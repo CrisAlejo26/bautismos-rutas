@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
 
 interface LocationModalProps {
 	isOpen: boolean;
@@ -9,6 +10,7 @@ interface LocationModalProps {
 
 export default function LocationModal({ isOpen, onClose, onSubmit }: LocationModalProps) {
 	const [name, setName] = useState('');
+	const [isSending, setIsSending] = useState(false);
 	const [phone, setPhone] = useState('');
 	const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
@@ -45,12 +47,61 @@ export default function LocationModal({ isOpen, onClose, onSubmit }: LocationMod
 		}
 	}, [isOpen]);
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		if (location) {
+		if (!location) {
+			toast.error('No se pudo obtener tu ubicación. Por favor, inténtalo de nuevo.');
+			return;
+		}
+
+		// Validar campos del formulario
+		if (!name.trim()) {
+			toast.error('Por favor, ingresa tu nombre.');
+			return;
+		}
+
+		if (!phone.trim() || phone.length < 9) {
+			toast.error('Por favor, ingresa un número de teléfono válido.');
+			return;
+		}
+
+		try {
+			setIsSending(true);
+
+			// Llamar a nuestra API para enviar el mensaje a WhatsApp
+			const response = await fetch('/api/whatsapp/send', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					name,
+					phone,
+					location,
+				}),
+			});
+
+			const data = await response.json();
+
+			if (!response.ok) {
+				console.error('Error en la respuesta de la API:', data);
+				throw new Error(data.error || 'Error al enviar el mensaje');
+			}
+
+			// Mostrar mensaje de éxito
+			toast.success('Información enviada correctamente. Te contactaremos pronto.');
+
+			// Llamar al callback del padre para notificar que el envío fue exitoso
 			onSubmit(name, phone, location);
+
+			// Limpiar los campos
 			setName('');
 			setPhone('');
+		} catch (error) {
+			console.error('Error al enviar información:', error);
+			toast.error('No se pudo enviar tu información. Inténtalo de nuevo.');
+		} finally {
+			setIsSending(false);
 		}
 	};
 
@@ -140,8 +191,34 @@ export default function LocationModal({ isOpen, onClose, onSubmit }: LocationMod
 										</button>
 										<button
 											type="submit"
-											className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-											Enviar
+											disabled={isSending}
+											className={`px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition flex items-center justify-center min-w-[80px] ${
+												isSending ? 'opacity-70 cursor-not-allowed' : ''
+											}`}>
+											{isSending ? (
+												<>
+													<svg
+														className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+														xmlns="http://www.w3.org/2000/svg"
+														fill="none"
+														viewBox="0 0 24 24">
+														<circle
+															className="opacity-25"
+															cx="12"
+															cy="12"
+															r="10"
+															stroke="currentColor"
+															strokeWidth="4"></circle>
+														<path
+															className="opacity-75"
+															fill="currentColor"
+															d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+													</svg>
+													Enviando...
+												</>
+											) : (
+												'Enviar'
+											)}
 										</button>
 									</div>
 								</form>
