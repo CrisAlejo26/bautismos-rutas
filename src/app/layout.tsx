@@ -6,21 +6,22 @@ import './globals.css';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bautismos.cristiancode.es';
 
 export const metadata: Metadata = {
-	metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? 'https://tusitio.com'), // :contentReference[oaicite:0]{index=0}
+	metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? BASE_URL),
 	title: 'Bautismos en agua',
 	description:
-		'Únete a nosotros en los Bautismos en agua en Finestrat, Benidorm — un evento de fe y comunidad organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
+		'Bautismos en agua en Finestrat, Benidorm — organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
 	openGraph: {
 		title: 'Bautismos en agua',
 		description:
-			'Únete a nosotros en los Bautismos en agua en Finestrat, Benidorm — un evento de fe y comunidad organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
+			'Bautismos en agua en Finestrat, Benidorm — organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
 		url: '/',
 		siteName: 'Iglesia de Dios Ministerial de Jesucristo Internacional',
 		images: [
 			{
-				url: '/logo.webp',
+				url: `${BASE_URL}/logo.webp`,
 				width: 800,
 				height: 600,
 				alt: 'Logo Iglesia de Dios Ministerial de Jesucristo Internacional',
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
 		card: 'summary_large_image',
 		title: 'Bautismos en agua',
 		description:
-			'Únete a nosotros en los Bautismos en agua en Finestrat, Benidorm — un evento de fe y comunidad organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
+			'Bautismos en agua en Finestrat, Benidorm — organizado por la Iglesia de Dios Ministerial de Jesucristo Internacional.',
 		images: ['/logo.webp'],
 	},
 	icons: {
