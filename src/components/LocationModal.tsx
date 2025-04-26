@@ -67,8 +67,6 @@ export default function LocationModal({ isOpen, onClose, onSubmit }: LocationMod
 
 		try {
 			setIsSending(true);
-
-			// Llamar a nuestra API para enviar el mensaje a WhatsApp
 			// Llamar a nuestra API para enviar el mensaje a Telegram
 			const response = await fetch('/api/telegram/send', {
 				method: 'POST',

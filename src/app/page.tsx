@@ -9,18 +9,18 @@ import LocationModal from '../components/LocationModal';
 export default function Home() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	// Esta función se llama cuando el envío a WhatsApp ha sido exitoso
+	// Esta función se llama cuando el envío a Telegram ha sido exitoso
 	const handleLocationSubmit = (
 		name: string,
 		phone: string,
 		location: { lat: number; lng: number },
 	) => {
-		// La lógica de envío a WhatsApp ya se ejecutó en el componente LocationModal
+		// La lógica de envío a Telegram ya se ejecutó en el componente LocationModal
 		// Aquí solo registramos la información y cerramos el modal
 		const googleMapsUrl = `https://maps.google.com/?q=${location.lat},${location.lng}`;
 		
 		// Registramos la información en la consola para fines de desarrollo
-		console.log('=== INFORMACIÓN ENVIADA A WHATSAPP ===');
+		console.log('=== INFORMACIÓN ENVIADA A TELEGRAM ===');
 		console.log('Nombre:', name);
 		console.log('Teléfono:', phone);
 		console.log('Ubicación:', `${location.lat}, ${location.lng}`);
