@@ -1,12 +1,25 @@
-// app/page.tsx
-
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import LocationModal from '../components/LocationModal';
 
 export default function Home() {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const handleLocationSubmit = (
+		name: string,
+		phone: string,
+		location: { lat: number; lng: number },
+	) => {
+		const googleMapsUrl = `https://maps.google.com/?q=${location.lat},${location.lng}`;
+		console.log('Nombre:', name);
+		console.log('Teléfono:', phone);
+		console.log('Ubicación URL:', googleMapsUrl);
+		setIsModalOpen(false);
+	};
 	const options = [
 		{ label: 'En la estación de autobuses', route: 'a' },
 		{ label: 'En la parada del tren de la estación de autobuses', route: 'b' },
@@ -20,14 +33,46 @@ export default function Home() {
 
 	return (
 		<motion.div
-			className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8
+			className="min-h-screen flex flex-col items-center p-4 sm:p-8
                bg-[var(--background)] text-[var(--foreground)]"
 			initial={{ opacity: 0, y: 50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.8, ease: 'easeOut' }}>
+			{/* Botón "Estoy perdido" */}
+			<motion.button
+				className="fixed top-4 right-4 z-40 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full
+				          shadow-lg flex items-center space-x-2 transition-all duration-300
+				          sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm"
+				whileHover={{ scale: 1.05 }}
+				whileTap={{ scale: 0.95 }}
+				onClick={() => setIsModalOpen(true)}
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ delay: 1.2, duration: 0.5 }}>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					className="h-5 w-5"
+					viewBox="0 0 20 20"
+					fill="currentColor">
+					<path
+						fillRule="evenodd"
+						d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+						clipRule="evenodd"
+					/>
+				</svg>
+				<span className="font-medium">Estoy perdido</span>
+			</motion.button>
+
+			{/* Modal de ubicación */}
+			<LocationModal
+				isOpen={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+				onSubmit={handleLocationSubmit}
+			/>
+
 			{/* Encabezado con logo + título */}
 			<motion.div
-				className="flex flex-col sm:flex-row items-center mb-8 sm:mb-12 w-full max-w-3xl"
+				className="flex flex-col sm:flex-row items-center mb-8 sm:mb-12 w-full max-w-3xl mt-10 sm:mt-0"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ delay: 0.5, duration: 0.5 }}>
@@ -60,8 +105,7 @@ export default function Home() {
                     bg-white dark:bg-gray-800
                     rounded-lg shadow-sm dark:shadow-gray-700
                     hover:shadow-md dark:hover:shadow-lg
-                    transition cursor-pointer"
-								>
+                    transition cursor-pointer">
 									<span className="font-mono mr-2 text-[#0e2b89] dark:text-blue-400 font-bold">
 										{String.fromCharCode(65 + index)}.
 									</span>
@@ -71,6 +115,29 @@ export default function Home() {
 						</motion.li>
 					))}
 				</ul>
+			</motion.div>
+
+			{/* Footer con enlaces a políticas */}
+			<motion.div
+				className="w-full max-w-3xl mt-8 text-center text-sm text-gray-600 dark:text-gray-400"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 1.5, duration: 0.5 }}>
+				<div className="flex flex-wrap justify-center gap-4">
+					<Link
+						href="/privacidad"
+						className="hover:underline hover:text-[#0e2b89] dark:hover:text-blue-400 transition-colors">
+						Política de Privacidad
+					</Link>
+					<Link
+						href="/condiciones"
+						className="hover:underline hover:text-[#0e2b89] dark:hover:text-blue-400 transition-colors">
+						Condiciones del Servicio
+					</Link>
+				</div>
+				<p className="mt-2">
+					&copy; {new Date().getFullYear()} Bautismos en Agua Finestrat - Benidorm
+				</p>
 			</motion.div>
 		</motion.div>
 	);
