@@ -5,10 +5,10 @@ import { toast } from 'react-hot-toast';
 interface LocationModalProps {
 	isOpen: boolean;
 	onClose: () => void;
-	onSubmit: (name: string, phone: string, location: { lat: number; lng: number }) => void;
+	onSubmit: () => void;
 }
 
-export default function LocationModal({ isOpen, onClose }: LocationModalProps) {
+export default function LocationModal({ isOpen, onClose, onSubmit }: LocationModalProps) {
 	const [name, setName] = useState('');
 	const [isSending, setIsSending] = useState(false);
 	const [phone, setPhone] = useState('');
@@ -90,7 +90,7 @@ export default function LocationModal({ isOpen, onClose }: LocationModalProps) {
 			toast.success('Información enviada correctamente. Te contactaremos pronto.');
 
 			// Llamar al callback del padre para notificar que el envío fue exitoso
-			// onSubmit(name, phone, location);
+			onSubmit();
 
 			// Limpiar los campos
 			setName('');
