@@ -41,7 +41,7 @@ export default function Home() {
 
 			{/* Opciones de rutas */}
 			<motion.div
-				className="w-full max-w-3xl bg-white dark:bg-gray-800
+				className="w-full max-w-3xl bg-blue-50 dark:bg-blue-900/30
                  rounded-2xl p-5 sm:p-6 shadow-lg dark:shadow-gray-700"
 				initial={{ scale: 0.9, opacity: 0 }}
 				animate={{ scale: 1, opacity: 1 }}
@@ -57,10 +57,11 @@ export default function Home() {
 							<Link href={`/routes/${option.route}`}>
 								<div
 									className="w-full text-left px-4 py-3
-                    bg-gray-50 dark:bg-gray-900
+                    bg-white dark:bg-gray-800
                     rounded-lg shadow-sm dark:shadow-gray-700
                     hover:shadow-md dark:hover:shadow-lg
-                    transition cursor-pointer">
+                    transition cursor-pointer"
+								>
 									<span className="font-mono mr-2 text-[#0e2b89] dark:text-blue-400 font-bold">
 										{String.fromCharCode(65 + index)}.
 									</span>

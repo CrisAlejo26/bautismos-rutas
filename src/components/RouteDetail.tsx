@@ -54,7 +54,7 @@ export default function RouteDetail({
 
 			{/* Contenido principal */}
 			<motion.div
-				className="w-full max-w-3xl bg-white dark:bg-gray-800 rounded-2xl p-5 sm:p-8 shadow-lg dark:shadow-gray-700 mb-8"
+				className="w-full max-w-3xl bg-blue-50 dark:bg-blue-900/30 rounded-2xl p-5 sm:p-8 shadow-lg dark:shadow-gray-700 mb-8"
 				initial={{ scale: 0.9, opacity: 0 }}
 				animate={{ scale: 1, opacity: 1 }}
 				transition={{ delay: 0.6, duration: 0.5 }}>
