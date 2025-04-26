@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
-import { config } from '../config/env';
 
 interface LocationModalProps {
 	isOpen: boolean;
@@ -69,7 +68,7 @@ export default function LocationModal({ isOpen, onClose, onSubmit }: LocationMod
 		try {
 			setIsSending(true);
 			// Enviar los datos al servidor usando la variable de entorno
-			const response = await fetch(`${config.apiUrl}/api/persona-perdida`, {
+			const response = await fetch(`/api/persona-perdida`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
