@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sendLostPersonInfo } from '@/services/whatsappService';
+import { sendLostPersonInfo } from '@/services/telegramService';
 
-// Esta es una API route de Next.js que maneja las solicitudes POST para enviar mensajes a WhatsApp
+// Esta es una API route de Next.js que maneja las solicitudes POST para enviar mensajes a Telegram
 export async function POST(request: NextRequest) {
 	try {
 		// Obtener los datos del cuerpo de la solicitud
@@ -16,17 +16,17 @@ export async function POST(request: NextRequest) {
 			);
 		}
 
-		// Enviar la información a WhatsApp
-		const result = await sendLostPersonInfo(name, phone, location);
+		// Enviar la información a Telegram
+		await sendLostPersonInfo(name, phone, location);
 
 		// Devolver una respuesta exitosa
-		return NextResponse.json({ success: true, result }, { status: 200 });
+		return NextResponse.json({ success: true }, { status: 200 });
 	} catch (error) {
-		console.error('Error al enviar mensaje a WhatsApp:', error);
+		console.error('Error al enviar mensaje a Telegram:', error);
 
 		// Devolver una respuesta de error
 		return NextResponse.json(
-			{ error: 'Error al enviar mensaje a WhatsApp', details: (error as Error).message },
+			{ error: 'Error al enviar mensaje a Telegram', details: (error as Error).message },
 			{ status: 500 },
 		);
 	}
