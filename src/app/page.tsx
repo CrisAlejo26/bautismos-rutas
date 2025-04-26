@@ -17,16 +17,16 @@ export default function Home() {
 	) => {
 		// La lógica de envío a Telegram ya se ejecutó en el componente LocationModal
 		// Aquí solo registramos la información y cerramos el modal
-		const googleMapsUrl = `https://maps.google.com/?q=${location.lat},${location.lng}`;
-		
+		// const googleMapsUrl = `https://maps.google.com/?q=${location.lat},${location.lng}`;
+
 		// Registramos la información en la consola para fines de desarrollo
-		console.log('=== INFORMACIÓN ENVIADA A TELEGRAM ===');
-		console.log('Nombre:', name);
-		console.log('Teléfono:', phone);
-		console.log('Ubicación:', `${location.lat}, ${location.lng}`);
-		console.log('Google Maps URL:', googleMapsUrl);
-		console.log('====================================');
-		
+		// console.log('=== INFORMACIÓN ENVIADA A TELEGRAM ===');
+		// console.log('Nombre:', name);
+		// console.log('Teléfono:', phone);
+		// console.log('Ubicación:', `${location.lat}, ${location.lng}`);
+		// console.log('Google Maps URL:', googleMapsUrl);
+		// console.log('====================================');
+
 		// Cerramos el modal
 		setIsModalOpen(false);
 	};
