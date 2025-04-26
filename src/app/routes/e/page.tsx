@@ -10,7 +10,7 @@ export default function RouteE() {
 
 Para llegar a la Cala Finestrat, debe dirigirse a la parada de autobús en la Avenida Mediterráneo y tomar la Línea 2. Este autobús le llevará directamente a la Cala Finestrat.
 
-Una de las paradas recomendadas para descender es frente al Carrefour de Cala Finestrat, desde donde podrá acceder fácilmente al lugar de los bautismos.
+Una de las paradas recomendadas para bajarse es frente al Carrefour de Cala Finestrat, desde donde podrá acceder fácilmente al lugar de los bautismos.
 
 El precio del trayecto en autobús puede variar entre 1€ y 3€, dependiendo de las tarifas vigentes.
 

@@ -16,7 +16,7 @@ export default function RouteF() {
 
 El trayecto desde Alicante hasta la Cala Finestrat dura aproximadamente una hora. El precio del billete puede variar entre 3€ y 5€, dependiendo de las tarifas vigentes.
 
-El mapa a continuación muestra la ubicación de la estación de tren Luceros, situada en el centro de Alicante, que es una de las opciones más convenientes para iniciar su viaje."
+El mapa a continuación muestra la ubicación de la estación Luceros, situada en el centro de Alicante, que es una de las opciones más convenientes para iniciar su viaje."
 			mapUrl="https://maps.app.goo.gl/27kZtuAFpnFMPoBR8"
 		/>
 	);

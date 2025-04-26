@@ -12,7 +12,7 @@ En la estación de Benidorm deberá hacer transbordo a autobús para continuar s
 
 El precio del trayecto completo puede variar entre 1€ y 3€, dependiendo de las tarifas vigentes.
 
-El mapa a continuación muestra la ruta que recorrerá hasta la siguiente estación y el posterior transbordo en autobús. Tenga en cuenta que la ruta exacta del autobús puede variar."
+El mapa a continuación muestra la ruta que recorrerá hasta la siguiente estación y el posterior debe hacer transbordo en autobús."
 			mapUrl="https://maps.app.goo.gl/UCzmUCeJgJQZX4Hj9"
 		/>
 	);
