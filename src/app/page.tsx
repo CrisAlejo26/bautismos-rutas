@@ -21,8 +21,7 @@ export default function Home() {
 		{ label: 'En la Cala Finestrat', route: 'd' },
 		{ label: 'En la Avenida Mediterráneo', route: 'e' },
 		{ label: 'En Alicante', route: 'f' },
-		{ label: 'Estoy perdido en Benidorm', route: 'g' },
-		{ label: 'Lugar de los bautismos', route: 'h' },
+		{ label: 'Lugar de los bautismos', route: 'g' },
 	];
 
 	return (
