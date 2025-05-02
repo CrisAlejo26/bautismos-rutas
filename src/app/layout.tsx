@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
 import OnlineCounter from '@/components/OnlineCounter';
+import VisitorTracker from '@/components/VisitorTracker';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				/>
 				{children}
 				<OnlineCounter />
+				<VisitorTracker />
 			</body>
 		</html>
 	);
