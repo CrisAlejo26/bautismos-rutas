@@ -18,11 +18,14 @@ export function useOnlineUsers() {
 
 		// Crear conexión al servidor Socket.io
 		const socketIo = io(SOCKET_SERVER_URL, {
-			transports: ['websocket', 'polling'],
+			// transports: ['websocket', 'polling'],
 			reconnection: true,
 			reconnectionAttempts: Infinity,
 			reconnectionDelay: 1000,
 			timeout: 30000,
+			transports: ['websocket'],
+			secure: true, // fuerza WSS
+			withCredentials: true,
 		});
 
 		// Guardar la instancia del socket
@@ -30,10 +33,10 @@ export function useOnlineUsers() {
 
 		// Registrar eventos de conexión para depuración
 		socketIo.on('connect', () => {
-			// console.log(
-			// 	'%c[Socket.io] Conectado con ID: ' + socketIo.id,
-			// 	'color: green; font-weight: bold',
-			// );
+			console.log(
+				'%c[Socket.io] Conectado con ID: ' + socketIo.id,
+				'color: green; font-weight: bold',
+			);
 			setConnected(true);
 
 			// Solicitar el número actual de usuarios al conectarse
@@ -67,12 +70,12 @@ export function useOnlineUsers() {
 
 		// Escuchar el evento 'user-count'
 		socketIo.on('user-count', (data: { count: number; timestamp: string }) => {
-			// console.log(
-			// 	`%c[Socket.io] Usuarios en línea: ${data.count} (${new Date(
-			// 		data.timestamp,
-			// 	).toLocaleTimeString()})`,
-			// 	'font-weight: bold',
-			// );
+			console.log(
+				`%c[Socket.io] Usuarios en línea: ${data.count} (${new Date(
+					data.timestamp,
+				).toLocaleTimeString()})`,
+				'font-weight: bold',
+			);
 			setOnlineUsers(data.count);
 		});
 
