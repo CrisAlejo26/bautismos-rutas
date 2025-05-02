@@ -70,7 +70,13 @@ export default function Home() {
 				animate={{ opacity: 1 }}
 				transition={{ delay: 0.5, duration: 0.5 }}>
 				<div className="w-20 h-20 sm:w-24 sm:h-24 relative mb-4 sm:mb-0 sm:mr-4">
-					<Image src="/logo.webp" alt="Logo Iglesia" fill className="object-contain" />
+					<Image
+						src="/logo.webp"
+						alt="Logo Iglesia"
+						fill
+						priority
+						className="object-contain"
+					/>
 				</div>
 				<h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center sm:text-left text-[#0e2b89] dark:text-white">
 					Bautismos en Agua Finestrat - Benidorm

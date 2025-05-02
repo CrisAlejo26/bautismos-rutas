@@ -22,7 +22,11 @@ export async function GET() {
 				cors: {
 					origin: '*',
 					methods: ['GET', 'POST'],
+					allowedHeaders: ['*'],
+					credentials: true,
 				},
+				transports: ['websocket', 'polling'],
+				pingTimeout: 60000,
 			});
 
 			// Manejar conexiones de clientes
@@ -48,9 +52,9 @@ export async function GET() {
 			});
 
 			// Iniciar el servidor HTTP
-			httpServer.listen(3001);
+			httpServer.listen(3002);
 
-			console.log('Socket.io iniciado en el puerto 3001');
+			console.log('Socket.io iniciado en el puerto 3002');
 		}
 
 		return new Response('Socket.io server running', { status: 200 });

@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useSocket } from '../context/SocketContext';
+import { useOnlineUsers } from '../hooks/useSocket';
 
 const OnlineCounter = () => {
-	const { onlineUsers } = useSocket();
+	const { onlineUsers, connected } = useOnlineUsers();
 	const [isVisible, setIsVisible] = useState<boolean>(true);
 
 	const toggleVisibility = () => {
@@ -25,8 +25,10 @@ const OnlineCounter = () => {
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 0.3 }}>
 					<div className="relative">
-						<div className="w-3 h-3 bg-green-400 rounded-full"></div>
-						<div className="w-3 h-3 bg-green-400 rounded-full absolute top-0 left-0 animate-ping opacity-75"></div>
+						<div className={`w-3 h-3 ${connected ? 'bg-green-400' : 'bg-red-400'} rounded-full`}></div>
+						{connected && (
+							<div className="w-3 h-3 bg-green-400 rounded-full absolute top-0 left-0 animate-ping opacity-75"></div>
+						)}
 					</div>
 					<span className="text-sm font-medium">
 						{onlineUsers} {onlineUsers === 1 ? 'persona' : 'personas'} en línea
