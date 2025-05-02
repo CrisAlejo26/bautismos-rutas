@@ -17,6 +17,7 @@ export function useOnlineUsers() {
 	const [connected, setConnected] = useState<boolean>(false);
 
 	useEffect(() => {
+		console.log('Socket server URL:', SOCKET_SERVER_URL);
 		// Solo inicializar en el cliente
 		if (typeof window === 'undefined') return;
 
