@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
 
 // URL del servidor Socket.io - Usa URL relativa para que funcione tanto en desarrollo como en producción
-const SOCKET_SERVER_URL = 'http://145.223.80.50:3002' || 'ws://localhost:3002';
+const SOCKET_SERVER_URL = 'http://145.223.80.50:3002';
 
 export function useOnlineUsers() {
 	const [onlineUsers, setOnlineUsers] = useState<number>(0);
