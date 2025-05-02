@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
 			},
 			{
 				source: '/socket.io/:path*',
-				destination: 'http://localhost:3002/socket.io/:path*', // Redirigir Socket.io al puerto 3002
+				destination: 'http://localhost:3002', // Redirigir Socket.io al puerto 3002
 			},
 		];
 	},

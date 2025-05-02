@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
 
 // URL del servidor Socket.io
-const SOCKET_SERVER_URL = 'http://localhost:3002';
+const SOCKET_SERVER_URL = 'http://localhost:3002/socket.io';
 
 export function useOnlineUsers() {
 	const [onlineUsers, setOnlineUsers] = useState<number>(0);
