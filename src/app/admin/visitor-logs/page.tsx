@@ -61,13 +61,6 @@ export default function VisitorLogsPage() {
 		}
 	};
 
-	// Cambiar entre modo claro y oscuro
-	const toggleDarkMode = () => {
-		const newMode = !darkMode;
-		setDarkMode(newMode);
-		localStorage.setItem('admin_dark_mode', newMode.toString());
-	};
-
 	useEffect(() => {
 		// Verificar si ya está autenticado
 		if (localStorage.getItem('admin_authenticated') === 'true') {
