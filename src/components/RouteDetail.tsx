@@ -59,7 +59,12 @@ export default function RouteDetail({
 				animate={{ scale: 1, opacity: 1 }}
 				transition={{ delay: 0.6, duration: 0.5 }}>
 				<div className="prose dark:prose-invert max-w-none">
-					<p className="text-base sm:text-lg whitespace-pre-line">{description}</p>
+					<p className="text-base sm:text-lg whitespace-pre-line">
+						{description}
+						<br /> <br /> <strong>ATENCION:</strong> La recomendación principal es que
+						tomen un taxi o uber desde Benidorm hasta el hotel donde se celebra los
+						bautismos, este servicio puede verse reducido en Cala Finestrat.
+					</p>
 				</div>
 
 				<div className="mt-8 flex flex-col sm:flex-row gap-4">
